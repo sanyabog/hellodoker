@@ -17,6 +17,7 @@ router.get("/", async (req, res) => {
     try {
         const users = await User.find()
         res.json(users)
+        //res.send("qwerty")
     } catch (error) {
         res.send(error.message)
     }
