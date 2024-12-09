@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   docker: circleci/docker@2.2.0
+
 jobs:
   build:
     working_directory: ~/repo
@@ -20,6 +21,7 @@ jobs:
       - run:
           name: Run tests
           command: npm run test
+
   build-and-deploy-docker-image:
     executor:
       name: docker/docker
@@ -33,8 +35,9 @@ jobs:
           name: Build and push Docker image
           command: |
             docker build -t hellodoker.azurecr.io/mynodeimage:latest .
-            echo $DOCKER_PASS | docker login hellodoker.azurecr.io -u $DOCKER_USER --password-stdin
+            echo Hy+y1xQizGAZzp99F7Z2hFGe4We6X6qr1eihKqlwsC+ACRBVd4zu | docker login hellodoker.azurecr.io -u Hy+y1xQizGAZzp99F7Z2hFGe4We6X6qr1eihKqlwsC+ACRBVd4zu --password-stdin
             docker push hellodoker.azurecr.io/mynodeimage:latest
+
 workflows:
   version: 2.1
   build:
